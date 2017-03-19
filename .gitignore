@@ -2,6 +2,9 @@
 /src
 config.py
 *.sqlite
-*.txt
 *.json
 *.html
+/bin
+/include
+/lib
+/local
