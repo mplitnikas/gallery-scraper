@@ -1,0 +1,7 @@
+*.pyc
+/src
+config.py
+*.sqlite
+*.txt
+*.json
+*.html
