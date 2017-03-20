@@ -4,8 +4,7 @@ import config
 class Publisher:
 
 	def __init__(self):
-		self.cf = config.Config
-		self.create_connection(self.cf.rabbit_uri)
+		self.create_connection(config.rabbit_uri)
 
 	def create_connection(self, uri):
 		self.connection = pika.BlockingConnection(pika.ConnectionParameters(uri))

@@ -3,9 +3,8 @@ import config
 
 class Requestor:
 
-	def __init__(self):
-		self.cf = config.Config
-		self.create_connection(self.cf.rabbit_uri)
+	def __init__(self, uri):
+		self.create_connection(uri)
 		self.setup_consume()
 
 	def create_connection(self, uri):
@@ -20,7 +19,7 @@ class Requestor:
 	def setup_consume(self):
 		self.channel.basic_consume(self.callback,
 									queue='requests',
-									no_ack=False)
+									no_ack=True)
 		print 'beginning consumer'
 		self.channel.start_consuming()
 
@@ -32,6 +31,6 @@ class Requestor:
 		self.connection.close()
 
 if __name__ == '__main__':
-	with Requestor() as rq:
+	with Requestor(config.rabbit_uri) as rq:
 		# just need to call the init method to start things off
 		pass
